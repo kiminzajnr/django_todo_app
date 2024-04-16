@@ -6,6 +6,16 @@
     <title>ToDo App</title>
 </head>
 <body>
-    <h1>Welcome to our todo app</h1>
+    <h1>ToDo App</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+            <li>todo.text</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
