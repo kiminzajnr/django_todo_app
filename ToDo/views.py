@@ -9,5 +9,5 @@ def index(request):
         form = TaskForm(request.POST)
         if form.is_valid:
             form.save()
-            return redirect('index')
+            return redirect('ToDo:index')
     return render(request, "ToDo/index.html", {"tasks": tasks, "form": form})
