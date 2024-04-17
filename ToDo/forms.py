@@ -7,5 +7,5 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ["todo_task"]
         widgets = {
-            'todo_task': forms.TextInput(attrs={'class': 'input', 'placeholder': 'Enter Todo'}),
+            'todo_task': forms.TextInput(attrs={'class': 'input is-primary', 'placeholder': 'Enter Todo'}),
         }
