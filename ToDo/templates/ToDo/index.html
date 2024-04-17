@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 </head>
 <body>
-    <h1>ToDo App</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Task</button>
-    </form>
-    <ul>
-        {% for task in tasks %}
-            <li>{{ task }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container is-max-desktop">
+        <div class="notification is-primary">
+            <h1 class="title">ToDo App</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class = "button is-info" type="submit">Add</button>
+            </form>
+            <ul>
+                {% for task in tasks %}
+                    <li>{{ task }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div> 
 </body>
 </html>
