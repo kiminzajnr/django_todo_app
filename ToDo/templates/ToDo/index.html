@@ -12,7 +12,7 @@
             <h1 class="title">ToDo App</h1>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_table }}
                 <button class = "button is-info" type="submit">Add</button>
             </form>
            
@@ -23,7 +23,17 @@
             <div class="notification is-primary">
                 <ul>
                     {% for task in tasks %}
-                        <li>{{ task }}</li>
+                    <article class="message is-info">
+                        <div class="message-header">
+                            <p>{{ task }}</p>
+                            <form action="{% url 'ToDo:delete_task' task.id %}" method="post">
+                                
+                                {% csrf_token %}
+                                <button class="delete" aria-label="delete"></button>
+                            </form>
+                            
+                        </div>
+                    </article>
                     {% endfor %}
                 </ul>
             </div>
