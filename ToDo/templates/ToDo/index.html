@@ -26,12 +26,10 @@
                     <article class="message is-info">
                         <div class="message-header">
                             <p>{{ task }}</p>
-                            <form action="{% url 'ToDo:delete_task' task.id %}" method="post">
-                                
+                            <form action="{% url 'ToDo:delete_task' task.id %}" method="post"> 
                                 {% csrf_token %}
                                 <button class="delete" aria-label="delete"></button>
-                            </form>
-                            
+                            </form>    
                         </div>
                     </article>
                     {% endfor %}
