@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm
 
@@ -13,6 +13,7 @@ def index(request):
     return render(request, "ToDo/index.html", {"tasks": tasks, "form": form})
 
 def delete_task(request, task_id):
-    task = Task.objects.get(id=task_id)
-    task.delete()
-    return redirect('ToDo:index')
+    task = get_object_or_404(id=task_id)
+    if request.method == "POST":
+        task.delete()
+        return redirect('ToDo:index')
