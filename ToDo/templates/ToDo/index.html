@@ -26,18 +26,32 @@
             </div>
         </div> 
     </section>
-    <br>
+
     <section class="section">
         <div class="container is-max-desktop">
             <div class="box scrollable-content">
                 {% for task in tasks %}
                     <article class="message is-info">
                         <div class="message-header">
-                            <p>{{ task }}</p> 
-                            <form action="{% url 'ToDo:delete_task' task.id %}" method="post"> 
-                                {% csrf_token %}
-                                <button class="delete" aria-label="delete"></button>
-                            </form>    
+                            <div class="level is-mobile" style="width: 100%; align-items: center;">
+                                <div class="level-left" style="flex-grow: 1; overflow: hidden;">
+                                    <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        {{ task }}
+                                    </p> 
+                                </div>
+                                <div class="level-right">
+                                    <form action="{% url 'ToDo:edit_task' task.id %}" method="post" class="level-item" style="margin-right: 5px;"> 
+                                        {% csrf_token %} 
+                                        <button type="submit" class="button is-warning is-small">Edit</button>
+                                    </form>
+                                    <form id="edit-form-{{ task.id }}" action="{% url 'ToDo:delete_task' task.id %}" method="post"> 
+                                        {% csrf_token %}
+                                        <button type="submit" class="button is-warning is-small">Delete</button>
+                                    </form>
+                                </div>
+                                 
+                            </div>
+                            
                         </div>
                     </article>
                 {% endfor %}       
