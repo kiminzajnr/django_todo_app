@@ -12,6 +12,17 @@ def index(request):
             return redirect('ToDo:index')
     return render(request, "ToDo/index.html", {"tasks": tasks, "form": form})
 
+def edit_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('ToDo:index')
+    else:
+        form = TaskForm(instance=task)
+    return render(request, "ToDo/edit_task.html", {'form': form})
+
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if request.method == "POST":
