@@ -40,4 +40,9 @@ A todo application built with Django and styled with the Bulma CSS framework.
 
 7. Open your web browser and go http://127.0.0.1:8000/ to view the app
 
+## Screenshots
+
 ![app_image](/django_todo.png)
+
+## License
+[MIT License](/LICENSE)
